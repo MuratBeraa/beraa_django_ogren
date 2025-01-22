@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>WOW SİTE</title>
+    </head>
+    <body>
+        <header>
+            <h1><a href="{%url 'home'%}">Django BloK</a></h1>
+            <a href="{%url 'post_yeni'%}">+Yeni Blog Post</a>
+        </header>
+        {% if user.is_authenticated %}
+            <p>Hoşgeldin {{user.username}}!</p>
+            <!--<p><a href="{% url 'logout' %}">Log out</p>-->
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit">Çıkış Yap</button>
+                </form>
+        {% else %}
+            <p>Giriş yapamadınız!</p>
+            <a href="{% url 'login' %}"> Log in </a> <br>
+            <a href="{% url 'signup'%}"> signup</a>
+        {% endif %}
+        <div>
+            {% block content %}
+            {% endblock content %}
+        </div>
+    </body>
+</html>
