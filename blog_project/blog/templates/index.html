@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Anasayfa {% endblock %}
+
+{% block content %}
+    <div id="cardss">
+        {% for blog in blogs %}
+            {% include '_cards.html' %}
+        {% endfor%}
+    </div>
+{% endblock %}
+
